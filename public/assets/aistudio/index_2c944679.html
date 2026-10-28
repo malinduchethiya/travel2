@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serendipity — Sri Lanka, the island in slow motion</title>
+  <meta name="description" content="An editorial journey through Sri Lanka: Sigiriya at dawn, the slow train to Ella, tea country, leopard country, Galle Fort and the long southern coast.">
+  <meta name="theme-color" content="#0B1A18">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Serendipity — Sri Lanka">
+  <meta property="og:description" content="An editorial journey through Sri Lanka: dawn at Sigiriya, the slow train to Ella, tea country, leopard country and the long southern coast.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#island">Skip to content</a>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="page-progress" aria-hidden="true"><span id="pageProgress"></span></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__place">Ceylon · 6°55′ N, 80°45′ E</span>
+      <span class="loader__word">Serendipity</span>
+      <div class="loader__meta">
+        <span class="loader__count"><b id="loaderCount">00</b><i>%</i></span>
+        <span class="loader__bar"><i id="loaderBar"></i></span>
+        <span class="loader__note">An island in slow motion</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Serendipity — back to top">
+      <span class="brand__mark" aria-hidden="true">✦</span>
+      <span class="brand__name">Serendipity</span>
+      <span class="brand__sub">Sri Lanka</span>
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#island"><i>01</i>The island</a>
+      <a href="#places"><i>02</i>Places</a>
+      <a href="#experiences"><i>03</i>Experiences</a>
+      <a href="#route"><i>04</i>The loop</a>
+      <a href="#when"><i>05</i>When to go</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--line" href="#route">Plan the loop</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu__inner">
+      <p class="label">Index</p>
+      <nav class="menu__links" aria-label="Mobile sections">
+        <a href="#island"><i>01</i>The island</a>
+        <a href="#places"><i>02</i>Places</a>
+        <a href="#experiences"><i>03</i>Experiences</a>
+        <a href="#route"><i>04</i>The loop</a>
+        <a href="#when"><i>05</i>When to go</a>
+      </nav>
+      <p class="menu__foot">Ceylon · 6°55′ N, 80°45′ E<br>An island in slow motion</p>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <section class="hero" id="hero">
+      <div class="hero__media">
+        <img src="assets/images/sigiriya-view.jpg" alt="Sigiriya rock rising out of the jungle, seen from Pidurangala at first light" fetchpriority="high">
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <span class="hero__side" aria-hidden="true">Ceylon — 2026</span>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Sri Lanka · The Indian Ocean</p>
+        <h1 class="hero__title">
+          <span class="hero__line">Sri Lanka</span>
+          <span class="hero__accent"><em>the island of</em> serendipity</span>
+        </h1>
+        <p class="hero__sub">Tea-high mountains, temple bells at dusk, leopards in the dry zone — and 1,340 kilometres of coast that never hurries.</p>
+      </div>
+
+      <div class="hero__foot">
+        <ul class="hero__facts">
+          <li><b>08</b><span>UNESCO sites</span></li>
+          <li><b>26</b><span>National parks</span></li>
+          <li><b>1,340 km</b><span>Of coastline</span></li>
+        </ul>
+        <a class="scroll-cue" href="#island">
+          <span>Scroll to wander</span>
+          <span class="scroll-cue__line" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── TICKER ───────────────────────────────────────── -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Tea country <i>✦</i> Temple bells <i>✦</i> Leopards <i>✦</i> Slow trains <i>✦</i> Stilt fishermen <i>✦</i> Blue whales <i>✦</i> Monsoon light <i>✦</i></span>
+        <span>Tea country <i>✦</i> Temple bells <i>✦</i> Leopards <i>✦</i> Slow trains <i>✦</i> Stilt fishermen <i>✦</i> Blue whales <i>✦</i> Monsoon light <i>✦</i></span>
+      </div>
+    </div>
+
+    <!-- ── 01 ISLAND ────────────────────────────────────── -->
+    <section class="island" id="island">
+      <div class="container">
+        <header class="sec-head">
+          <p class="label"><span>01</span> The island</p>
+          <h2 class="display" data-words>Small enough to cross in a day.<br><em>Strange enough to keep you for a month.</em></h2>
+        </header>
+
+        <div class="island__grid">
+          <p class="island__lede" data-words>Sixty-five thousand square kilometres of contradiction. In one morning you can watch elephants cross a tank, climb into cloud forest, and eat hoppers by the sea before the afternoon rain.</p>
+          <div class="island__body" data-fade>
+            <p>The island runs on a slower clock. Trains lean through the hill country at thirty kilometres an hour. Monks sweep temple courtyards at first light. Fishermen still balance on poles off the southern coast at dusk, waiting for a herring.</p>
+            <p>It is a place of small miracles rather than grand ones — the <em>serendipity</em> the old name promised. You arrive for the beaches and stay for the light on the paddy fields.</p>
+          </div>
+          <blockquote class="island__quote" data-fade>
+            <span class="quote-mark" aria-hidden="true">“</span>
+            The finest island of its size in all the world.
+            <cite>Attributed to Marco Polo, 13th century</cite>
+          </blockquote>
+        </div>
+
+        <ul class="stats">
+          <li class="stat"><span class="stat__num" data-count="8" data-pad="2">8</span><span class="stat__label">UNESCO World Heritage sites</span></li>
+          <li class="stat"><span class="stat__num" data-count="26">26</span><span class="stat__label">National parks</span></li>
+          <li class="stat"><span class="stat__num" data-count="1340" data-format="comma">1,340</span><span class="stat__label">Kilometres of coastline</span></li>
+          <li class="stat"><span class="stat__num" data-count="2">2</span><span class="stat__label">Monsoons, on opposite coasts</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── 02 PLACES ────────────────────────────────────── -->
+    <section class="places" id="places">
+      <div class="places__pin">
+        <div class="places__head container">
+          <p class="label label--light"><span>02</span> Places</p>
+          <div class="places__head-row">
+            <h2 class="display display--light" data-words>Eight reasons<br><em>to miss your flight home.</em></h2>
+            <div class="places__note">
+              <p>From the cultural triangle to the southern ramparts — the island's essential stops, in no particular hurry.</p>
+              <span class="places__count"><b id="placesIndex">01</b> / 08</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="places__viewport">
+          <div class="places__reel" id="placesReel">
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/hero.jpg" alt="Sigiriya rock fortress above its water gardens" decoding="async"></div>
+              <div class="card__top"><span>01</span><span>Cultural Triangle</span></div>
+              <div class="card__body">
+                <h3>Sigiriya</h3>
+                <p>A fifth-century sky fortress of frescoes, mirror walls and water gardens. Climb at dawn, before the rock retains the heat.</p>
+              </div>
+            </article>
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/ella.jpg" alt="A blue train crossing the Nine Arch Bridge near Ella" decoding="async"></div>
+              <div class="card__top"><span>02</span><span>Hill Country</span></div>
+              <div class="card__body">
+                <h3>Ella</h3>
+                <p>Nine arches, cloud forest and the slowest, most beautiful train ride in Asia. Walk the rails; stay for the waterfalls.</p>
+              </div>
+            </article>
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/kandy.jpg" alt="The Temple of the Sacred Tooth Relic beside Kandy lake" decoding="async"></div>
+              <div class="card__top"><span>03</span><span>Central Highlands</span></div>
+              <div class="card__body">
+                <h3>Kandy</h3>
+                <p>The last royal capital, wrapped around a lake. Drums at dusk in the Temple of the Sacred Tooth, every evening, without fail.</p>
+              </div>
+            </article>
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/tea-hills.jpg" alt="Tea estates combed across the hills near Haputale" decoding="async"></div>
+              <div class="card__top"><span>04</span><span>Tea Country</span></div>
+              <div class="card__body">
+                <h3>Nuwara Eliya</h3>
+                <p>Cool air, colonial bungalows and tea estates stitched across the hills at two thousand metres. Bring a jacket in July.</p>
+              </div>
+            </article>
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/yala-safari.jpg" alt="A tusker elephant walking through long grass in Yala" decoding="async"></div>
+              <div class="card__top"><span>05</span><span>Deep South</span></div>
+              <div class="card__body">
+                <h3>Yala</h3>
+                <p>Leopard country: 979 square kilometres of thorn scrub, lagoon and elephant paths on the edge of the Indian Ocean.</p>
+              </div>
+            </article>
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/galle.jpg" alt="The white lighthouse inside Galle Fort" decoding="async"></div>
+              <div class="card__top"><span>06</span><span>Southern Coast</span></div>
+              <div class="card__body">
+                <h3>Galle</h3>
+                <p>A Dutch-walled fort of ramparts, cinnamon and four-hundred-year-old streets. Best walked just before the lamps come on.</p>
+              </div>
+            </article>
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/mirissa.jpg" alt="A coconut palm leaning over the bay at Mirissa" decoding="async"></div>
+              <div class="card__top"><span>07</span><span>South Coast</span></div>
+              <div class="card__body">
+                <h3>Mirissa</h3>
+                <p>Coconut-hill sunsets, blue whales offshore from November, and a bay that has never once hurried anybody.</p>
+              </div>
+            </article>
+            <article class="card" data-card>
+              <div class="card__img"><img src="assets/images/anuradhapura-2.jpg" alt="The white Ruwanwelisaya stupa at Anuradhapura" decoding="async"></div>
+              <div class="card__top"><span>08</span><span>North Central</span></div>
+              <div class="card__body">
+                <h3>Anuradhapura</h3>
+                <p>The sacred city of dagobas, where the island's oldest stories are still told beneath the sacred bodhi tree.</p>
+              </div>
+            </article>
+            <div class="places__end">
+              <p class="label label--light">And then</p>
+              <p>1,300 more<br>kilometres<br><em>of coast.</em></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="places__foot container">
+          <div class="places__bar" aria-hidden="true"><span id="placesBar"></span></div>
+          <p class="places__hint">Scroll to travel east — or west</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 03 EXPERIENCES ───────────────────────────────── -->
+    <section class="experiences" id="experiences">
+      <div class="container">
+        <header class="sec-head">
+          <p class="label"><span>03</span> Experiences</p>
+          <h2 class="display" data-words>Four things worth<br><em>changing your plans for.</em></h2>
+        </header>
+
+        <article class="exp" data-exp>
+          <div class="exp__media">
+            <div class="exp__img"><img src="assets/images/train.jpg" alt="Passengers leaning out of the window of a hill country train" decoding="async"></div>
+            <span class="exp__tag">Kandy → Ella · 6–7 hours</span>
+          </div>
+          <div class="exp__text">
+            <p class="label"><span>i</span> The hill country line</p>
+            <h3>A train that leans<br>through the tea hills.</h3>
+            <p>Second class, windows open, six hours from Kandy to Ella. After Nanu Oya the track doubles back on itself and the whole carriage leans out to look. Buy short eats at the station; the tea comes by the cup.</p>
+            <ul class="exp__meta"><li>Depart early</li><li>Sit on the right after Nanu Oya</li><li>Book a reserved seat</li></ul>
+          </div>
+        </article>
+
+        <article class="exp exp--flip" data-exp>
+          <div class="exp__media">
+            <div class="exp__img"><img src="assets/images/tea.jpg" alt="Close view of bright green tea leaves on a Nuwara Eliya estate" decoding="async"></div>
+            <span class="exp__tag">Haputale · 1,800 m</span>
+          </div>
+          <div class="exp__text">
+            <p class="label"><span>ii</span> Ceylon tea</p>
+            <h3>Two leaves<br>and a bud.</h3>
+            <p>The pluckers work at a rhythm you can hear before you see them. Walk an estate at first light, watch the withering troughs, then taste a first flush that never leaves the island in this condition.</p>
+            <ul class="exp__meta"><li>Haputale &amp; Nuwara Eliya</li><li>Best light before 9am</li><li>Visit a working factory</li></ul>
+          </div>
+        </article>
+
+        <article class="exp" data-exp>
+          <div class="exp__media">
+            <div class="exp__img"><img src="assets/images/stilt.jpg" alt="Stilt fishermen perched on poles in the sea near Koggala" decoding="async"></div>
+            <span class="exp__tag">Koggala · Last light</span>
+          </div>
+          <div class="exp__text">
+            <p class="label"><span>iii</span> The stilt fishermen</p>
+            <h3>An old balancing act,<br>gone quiet.</h3>
+            <p>They sit a metre above the swell on a crossbar lashed to a pole, patient as herons. The tradition is now rare and staged for cameras in places; go quietly, pay fairly, and watch the sea rather than the lens.</p>
+            <ul class="exp__meta"><li>Koggala &amp; Ahangama</li><li>Dusk, not midday</li><li>Ask before photographing</li></ul>
+          </div>
+        </article>
+
+        <article class="exp exp--flip" data-exp>
+          <div class="exp__media">
+            <div class="exp__img"><img src="assets/images/surf-coast.jpg" alt="Aerial view of the long beach and fishing boats at Arugam Bay" decoding="async"></div>
+            <span class="exp__tag">Arugam Bay · May–September</span>
+          </div>
+          <div class="exp__text">
+            <p class="label"><span>iv</span> East coast swells</p>
+            <h3>The other side<br>of the monsoon.</h3>
+            <p>When the south gets wet, the east dries out and Arugam Bay fills with boards. The main point is a long right-hand reef break; beginners head to Whiskey Point. Evenings are for coconut roti and no plans.</p>
+            <ul class="exp__meta"><li>Arugam Bay</li><li>Peak surf June–August</li><li>Boards for hire on the beach</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── 04 ROUTE ─────────────────────────────────────── -->
+    <section class="route" id="route">
+      <div class="route__pin">
+        <div class="container route__inner">
+          <div class="route__copy">
+            <p class="label label--light"><span>04</span> The loop</p>
+            <h2 class="display display--light" data-words>Twelve days.<br><em>One island. No rush.</em></h2>
+            <p class="route__lede" data-fade>A suggested first loop: the cultural triangle, the hill country line, then down the coast back to Colombo. Slow enough to stay two nights in the places you like.</p>
+            <ol class="stops" id="stops">
+              <li class="stop is-active"><span class="stop__day">Days 1–2</span><span class="stop__name">Negombo</span><span class="stop__note">Arrive, acclimatise, eat hoppers by the lagoon.</span></li>
+              <li class="stop"><span class="stop__day">Day 3</span><span class="stop__name">Anuradhapura</span><span class="stop__note">Dagobas and the sacred bodhi tree.</span></li>
+              <li class="stop"><span class="stop__day">Days 4–5</span><span class="stop__name">Sigiriya</span><span class="stop__note">Climb at dawn; water gardens in the afternoon.</span></li>
+              <li class="stop"><span class="stop__day">Day 6</span><span class="stop__name">Kandy</span><span class="stop__note">The temple, the lake, the last royal capital.</span></li>
+              <li class="stop"><span class="stop__day">Days 7–8</span><span class="stop__name">Ella</span><span class="stop__note">The train, Nine Arch, Little Adam's Peak.</span></li>
+              <li class="stop"><span class="stop__day">Day 9</span><span class="stop__name">Yala</span><span class="stop__note">Dawn safari in leopard country.</span></li>
+              <li class="stop"><span class="stop__day">Days 10–11</span><span class="stop__name">Mirissa</span><span class="stop__note">Whales offshore, coconut hill at sunset.</span></li>
+              <li class="stop"><span class="stop__day">Day 12</span><span class="stop__name">Galle</span><span class="stop__note">Ramparts, cinnamon, the fort at dusk.</span></li>
+            </ol>
+          </div>
+
+          <div class="route__map" aria-hidden="true">
+            <svg viewBox="0 0 620 860" role="presentation" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#E4C989"/>
+                  <stop offset="100%" stop-color="#C6A15B"/>
+                </linearGradient>
+              </defs>
+              <g class="map-grid">
+                <line x1="0" y1="120" x2="620" y2="120"></line>
+                <line x1="0" y1="300" x2="620" y2="300"></line>
+                <line x1="0" y1="480" x2="620" y2="480"></line>
+                <line x1="0" y1="660" x2="620" y2="660"></line>
+                <line x1="140" y1="0" x2="140" y2="860"></line>
+                <line x1="320" y1="0" x2="320" y2="860"></line>
+                <line x1="500" y1="0" x2="500" y2="860"></line>
+              </g>
+              <path class="map-shape" d="M300 44c22 0 40 10 54 32 26 42 48 76 66 122 20 50 38 96 44 148 6 54 0 108-10 162-10 54-20 104-42 154-22 50-54 92-88 116-22 16-48 16-68 0-32-26-52-70-64-116-14-54-22-104-24-156-2-54 2-106 14-156 12-50 32-94 56-134 22-36 34-78 36-116 2-26 12-50 26-56z"></path>
+              <path class="map-route" id="routePath" d="M180 530 C 188 490 208 448 226 412 C 239 384 248 353 258 331 C 280 348 301 374 321 400 C 318 438 307 478 302 517 C 327 546 351 568 374 592 C 393 618 408 640 416 660 C 400 696 366 726 334 742 C 318 750 300 752 286 754 C 262 750 236 734 218 720" stroke="url(#routeGrad)"></path>
+              <g class="map-node" data-node="0" transform="translate(180,530)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="-30" y="2" text-anchor="end">Negombo</text><text class="map-node__day" x="-30" y="20" text-anchor="end">01–02</text></g>
+              <g class="map-node" data-node="1" transform="translate(258,331)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="30" y="2">Anuradhapura</text><text class="map-node__day" x="30" y="20">03</text></g>
+              <g class="map-node" data-node="2" transform="translate(321,400)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="30" y="2">Sigiriya</text><text class="map-node__day" x="30" y="20">04–05</text></g>
+              <g class="map-node" data-node="3" transform="translate(302,517)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="-30" y="2" text-anchor="end">Kandy</text><text class="map-node__day" x="-30" y="20" text-anchor="end">06</text></g>
+              <g class="map-node" data-node="4" transform="translate(374,592)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="30" y="2">Ella</text><text class="map-node__day" x="30" y="20">07–08</text></g>
+              <g class="map-node" data-node="5" transform="translate(416,660)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="30" y="2">Yala</text><text class="map-node__day" x="30" y="20">09</text></g>
+              <g class="map-node" data-node="6" transform="translate(286,754)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="30" y="20">Mirissa</text><text class="map-node__day" x="30" y="38">10–11</text></g>
+              <g class="map-node" data-node="7" transform="translate(218,720)"><circle r="17"></circle><circle class="map-node__dot" r="4"></circle><text x="-30" y="-6" text-anchor="end">Galle</text><text class="map-node__day" x="-30" y="12" text-anchor="end">12</text></g>
+            </svg>
+            <p class="route__scale">A suggestion, not a schedule · Not to scale</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── QUOTE ────────────────────────────────────────── -->
+    <section class="quote">
+      <div class="container">
+        <span class="quote__mark" aria-hidden="true">✦</span>
+        <blockquote class="quote__text" data-words>You come for the island.<br><em>You stay for the pace.</em></blockquote>
+        <p class="quote__cite">Field notes · Southern Province, 2026</p>
+      </div>
+    </section>
+
+    <!-- ── 05 WHEN ──────────────────────────────────────── -->
+    <section class="when" id="when">
+      <div class="container">
+        <header class="sec-head">
+          <p class="label"><span>05</span> When to go</p>
+          <h2 class="display" data-words>Two monsoons,<br><em>one dry island.</em></h2>
+          <p class="when__intro" data-fade>There is no bad month to visit Sri Lanka — only the wrong coast. When the south-west monsoon soaks the west, the east is at its best, and the other way around.</p>
+        </header>
+
+        <div class="when__grid">
+          <div class="when__col" data-fade>
+            <p class="when__season">Nov — Apr</p>
+            <h3>West &amp; south coast</h3>
+            <p>Dry, bright and calm. Galle, Mirissa and the whale season off the south. Christmas is busy; January is perfect.</p>
+            <span class="when__tag">Galle · Mirissa · Colombo</span>
+          </div>
+          <div class="when__col" data-fade>
+            <p class="when__season">May — Sep</p>
+            <h3>East coast</h3>
+            <p>The monsoon flips. Trincomalee and Arugam Bay take over, surf peaks in June and August, and the beaches empty out.</p>
+            <span class="when__tag">Arugam Bay · Trinco</span>
+          </div>
+          <div class="when__col" data-fade>
+            <p class="when__season">Dec — Mar</p>
+            <h3>Hill country</h3>
+            <p>Clear mornings for the train, tea estates and Horton Plains — before the afternoon mist rolls up from the valley.</p>
+            <span class="when__tag">Kandy · Ella · Nuwara Eliya</span>
+          </div>
+        </div>
+        <p class="when__note">Inter-monsoon rain falls island-wide in October and November — short, warm, and usually over by dinner.</p>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────── -->
+    <section class="cta">
+      <div class="cta__halo" aria-hidden="true"></div>
+      <div class="container cta__inner">
+        <svg class="cta__badge" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><path id="badgeCircle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"></path></defs>
+          <text><textPath href="#badgeCircle">SLOW TRAVEL · CEYLON · INDIAN OCEAN ·</textPath></text>
+          <circle cx="100" cy="100" r="34"></circle>
+          <text class="cta__badge-mark" x="100" y="112" text-anchor="middle">✦</text>
+        </svg>
+        <h2 class="display display--light cta__title" data-words>The island<br><em>is waiting.</em></h2>
+        <div class="cta__actions">
+          <a class="btn btn--gold" href="#route">See the loop</a>
+          <a class="btn btn--ghost" href="#top">Back to the top</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <p class="footer__wordmark">Serendipity</p>
+          <p class="footer__tag">An independent design study of Sri Lanka.<br>No bookings are taken here — travel details are illustrative.</p>
+        </div>
+        <nav class="footer__nav" aria-label="Footer">
+          <div>
+            <p class="label">Explore</p>
+            <a href="#island">The island</a>
+            <a href="#places">Places</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#route">The loop</a>
+            <a href="#when">When to go</a>
+          </div>
+          <div>
+            <p class="label">Coordinates</p>
+            <p class="footer__meta">6°55′ N, 80°45′ E<br>Indian Ocean<br>65,610 km²</p>
+          </div>
+        </nav>
+      </div>
+
+      <details class="credits">
+        <summary>Photography credits <span aria-hidden="true">+</span></summary>
+        <ul>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Sigiriya_view_from_Pidurangala_4.jpg" rel="noopener" target="_blank">Sigiriya from Pidurangala</a> — Nipuna Gamage, CC BY-SA 4.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Sigiriya.jpg" rel="noopener" target="_blank">Sigiriya</a> — Bernard Gagnon, CC BY-SA 3.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:SL_Demodara_near_Ella_asv2020-01_img02.jpg" rel="noopener" target="_blank">Nine Arch Bridge, Ella</a> — A.Savin, FAL</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:SL_Kandy_asv2020-01_img34_Sacred_Tooth_Temple.jpg" rel="noopener" target="_blank">Temple of the Sacred Tooth, Kandy</a> — A.Savin, FAL</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:SL_Anuradhapura_asv2020-01_img11_Ruwanwelisaya_Stupa.jpg" rel="noopener" target="_blank">Ruwanwelisaya Stupa</a> — A.Savin, FAL</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:SL_Galle_Fort_asv2020-01_img24.jpg" rel="noopener" target="_blank">Galle Fort</a> — A.Savin, FAL</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Tea_plantation_Haputale.jpg" rel="noopener" target="_blank">Tea plantation, Haputale</a> — Adbar, CC BY-SA 3.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Sri_Lanka,_Tea_leaves,_Nuwara_Eliya.jpg" rel="noopener" target="_blank">Tea leaves, Nuwara Eliya</a> — Vyacheslav Argenberg, CC BY 4.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Sri_Lanka,_Haputale,_Train_in_the_mountains_of_Sri_Lanka%27s_%27Hill_Country%27.jpg" rel="noopener" target="_blank">Hill country train</a> — Vyacheslav Argenberg, CC BY 4.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Tuskers_of_Sri_Lanka.jpg" rel="noopener" target="_blank">Tuskers of Sri Lanka</a> — Sumudusoyza007, CC BY-SA 4.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Mirissa_sea_2.jpg" rel="noopener" target="_blank">Mirissa</a> — Thedani Karasnagoda, CC BY-SA 4.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Fishermen_practicing_traditional_stilt_fishing_near_Galle,_southern_Sri_Lanka,_20260207_1420_9464.jpg" rel="noopener" target="_blank">Stilt fishermen, Koggala</a> — Jakub Hałun, CC BY 4.0</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Beach_of_Arugam_Bay.jpg" rel="noopener" target="_blank">Arugam Bay</a> — Dennis Sylvester Hurd, CC0</li>
+        </ul>
+        <p class="credits__note">All photographs via Wikimedia Commons, reproduced under their respective licences. Route and timings are illustrative.</p>
+      </details>
+
+      <div class="footer__bottom">
+        <span>© 2026 Serendipity — a design study</span>
+        <span>Sri Lanka · Indian Ocean</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

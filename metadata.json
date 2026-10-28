@@ -1,0 +1,6 @@
+{
+  "name": "Serendipity — Sri Lanka",
+  "description": "An editorial journey through Sri Lanka: Sigiriya at dawn, the slow train to Ella, tea country, leopard country, Galle Fort and the long southern coast.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
