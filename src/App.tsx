@@ -15,25 +15,14 @@ export default function App() {
     const fine = window.matchMedia('(pointer: fine)').matches;
     const S = reduce ? 0.7 : 1;
 
-    const loader = $('#loader');
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
 
-    function unlock() {
-      document.body.classList.remove('is-locked');
-      if (loader) {
-        loader.style.display = 'none';
-        loader.setAttribute('aria-hidden', 'true');
-      }
-    }
-
     if (!gsap || !ScrollTrigger) {
-      unlock();
       return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
-    document.body.classList.add('is-locked');
 
     /* Split text into word wrappers, preserving inline markup like <em> */
     function splitWords(root: HTMLElement | null): HTMLElement[] {
@@ -73,7 +62,7 @@ export default function App() {
     const heroWords = splitWords($('.hero__title'));
     gsap.set(heroWords, { yPercent: 130, opacity: 0 });
 
-    const heroIntro = gsap.timeline({ paused: true });
+    const heroIntro = gsap.timeline();
     heroIntro
       .to(
         heroWords,
@@ -87,58 +76,10 @@ export default function App() {
         0
       )
       .from('.hero__media img', { scale: 1.18, duration: 2.6 * S, ease: 'power2.out' }, 0)
-      .from('.hero__eyebrow', { y: 18, opacity: 0, duration: 0.9 * S, ease: 'power3.out' }, 0.15)
       .from('.hero__sub', { y: 22, opacity: 0, duration: 0.9 * S, ease: 'power3.out' }, 0.45)
       .from('.hero__foot', { opacity: 0, y: 16, duration: 0.9 * S, ease: 'power3.out' }, 0.55)
       .from('.nav > *', { y: -16, opacity: 0, duration: 0.9 * S, stagger: 0.06, ease: 'power3.out' }, 0.15)
       .from('.hero__side', { opacity: 0, duration: 1 * S }, 0.9);
-
-    /* ── Loader ─────────────────────────────────────────── */
-    let done = false;
-    function finishLoader() {
-      if (done) return;
-      done = true;
-      unlock();
-    }
-
-    const loadTl = gsap.timeline({ onComplete: finishLoader });
-    const count = { v: 0 };
-    const countEl = $('#loaderCount');
-    const barEl = $('#loaderBar');
-
-    if (loader) {
-      gsap.set(loader, { clipPath: 'inset(0% 0% 0% 0%)' });
-      loadTl
-        .from('.loader__place', { opacity: 0, y: 10, duration: 0.7 * S, ease: 'power2.out' }, 0)
-        .from('.loader__word', { yPercent: 30, opacity: 0, duration: 1.1 * S, ease: 'expo.out' }, 0.05)
-        .to(
-          count,
-          {
-            v: 100,
-            duration: 1.7 * S,
-            ease: 'power2.inOut',
-            onUpdate: () => {
-              if (countEl) countEl.textContent = String(Math.round(count.v)).padStart(2, '0');
-            },
-          },
-          0.1
-        )
-        .to(barEl, { scaleX: 1, duration: 1.7 * S, ease: 'power2.inOut' }, 0.1)
-        .to('.loader__inner', { yPercent: -6, opacity: 0, duration: 0.5 * S, ease: 'power2.in' }, '-=0.15')
-        .to(loader, { clipPath: 'inset(0% 0% 100% 0%)', duration: 1 * S, ease: 'expo.inOut' }, '-=0.2')
-        .add(() => heroIntro.play(), '-=0.75');
-    } else {
-      heroIntro.play();
-      unlock();
-    }
-
-    const failsafeTimer = window.setTimeout(() => {
-      if (!done) {
-        loadTl.kill();
-        finishLoader();
-        heroIntro.progress(1);
-      }
-    }, 7000);
 
     /* ── Hero scroll parallax ───────────────────────────── */
     gsap.to('.hero__media', {
@@ -532,22 +473,6 @@ export default function App() {
     });
 
     /* ── CTA ────────────────────────────────────────────── */
-    if ($('.cta__badge')) {
-      gsap.to($('.cta__badge text'), {
-        rotation: 360,
-        svgOrigin: '100 100',
-        duration: 42,
-        repeat: -1,
-        ease: 'none',
-      });
-      gsap.from('.cta__badge', {
-        scale: 0.6,
-        opacity: 0,
-        duration: 1.2 * S,
-        ease: 'back.out(1.6)',
-        scrollTrigger: { trigger: '.cta', start: 'top 78%', once: true },
-      });
-    }
     gsap.from('.cta__actions .btn', {
       y: 24,
       opacity: 0,
@@ -648,7 +573,6 @@ export default function App() {
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
 
     return () => {
-      window.clearTimeout(failsafeTimer);
       if (toggle) toggle.removeEventListener('click', handleToggle);
       menuLinks.forEach((a) => a.removeEventListener('click', closeMenu));
       window.removeEventListener('keydown', handleKeydown);
@@ -673,23 +597,6 @@ export default function App() {
       <div className="cursor" id="cursor" aria-hidden="true">
         <span className="cursor__dot"></span>
         <span className="cursor__ring"></span>
-      </div>
-
-      <div className="loader" id="loader" aria-hidden="true">
-        <div className="loader__inner">
-          <span className="loader__place">Ceylon · 6°55′ N, 80°45′ E</span>
-          <span className="loader__word">Serendipity</span>
-          <div className="loader__meta">
-            <span className="loader__count">
-              <b id="loaderCount">00</b>
-              <i>%</i>
-            </span>
-            <span className="loader__bar">
-              <i id="loaderBar"></i>
-            </span>
-            <span className="loader__note">An island in slow motion</span>
-          </div>
-        </div>
       </div>
 
       <header className="nav" id="nav">
@@ -778,7 +685,6 @@ export default function App() {
           </span>
 
           <div className="hero__content">
-            <p className="hero__eyebrow">Sri Lanka · The Indian Ocean</p>
             <h1 className="hero__title">
               <span className="hero__line">Sri Lanka</span>
               <span className="hero__accent">
@@ -862,7 +768,6 @@ export default function App() {
                   “
                 </span>
                 The finest island of its size in all the world.
-                <cite>Attributed to Marco Polo, 13th century</cite>
               </blockquote>
             </div>
 
@@ -1099,7 +1004,6 @@ export default function App() {
               <div className="places__bar" aria-hidden="true">
                 <span id="placesBar"></span>
               </div>
-              <p className="places__hint">Scroll to travel east — or west</p>
             </div>
           </div>
         </section>
@@ -1419,7 +1323,6 @@ export default function App() {
                     </text>
                   </g>
                 </svg>
-                <p className="route__scale">A suggestion, not a schedule · Not to scale</p>
               </div>
             </div>
           </div>
@@ -1497,18 +1400,6 @@ export default function App() {
         <section className="cta">
           <div className="cta__halo" aria-hidden="true"></div>
           <div className="container cta__inner">
-            <svg className="cta__badge" viewBox="0 0 200 200" aria-hidden="true">
-              <defs>
-                <path id="badgeCircle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"></path>
-              </defs>
-              <text>
-                <textPath href="#badgeCircle">SLOW TRAVEL · CEYLON · INDIAN OCEAN ·</textPath>
-              </text>
-              <circle cx="100" cy="100" r="34"></circle>
-              <text className="cta__badge-mark" x="100" y="112" textAnchor="middle">
-                ✦
-              </text>
-            </svg>
             <h2 className="display display--light cta__title" data-words>
               The island
               <br />
@@ -1549,158 +1440,9 @@ export default function App() {
               </div>
               <div>
                 <p className="label">Coordinates</p>
-                <p className="footer__meta">
-                  6°55′ N, 80°45′ E
-                  <br />
-                  Indian Ocean
-                  <br />
-                  65,610 km²
-                </p>
               </div>
             </nav>
           </div>
-
-          <details className="credits">
-            <summary>
-              Photography credits <span aria-hidden="true">+</span>
-            </summary>
-            <ul>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Sigiriya_view_from_Pidurangala_4.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Sigiriya from Pidurangala
-                </a>{' '}
-                — Nipuna Gamage, CC BY-SA 4.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Sigiriya.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Sigiriya
-                </a>{' '}
-                — Bernard Gagnon, CC BY-SA 3.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:SL_Demodara_near_Ella_asv2020-01_img02.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Nine Arch Bridge, Ella
-                </a>{' '}
-                — A.Savin, FAL
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:SL_Kandy_asv2020-01_img34_Sacred_Tooth_Temple.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Temple of the Sacred Tooth, Kandy
-                </a>{' '}
-                — A.Savin, FAL
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:SL_Anuradhapura_asv2020-01_img11_Ruwanwelisaya_Stupa.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Ruwanwelisaya Stupa
-                </a>{' '}
-                — A.Savin, FAL
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:SL_Galle_Fort_asv2020-01_img24.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Galle Fort
-                </a>{' '}
-                — A.Savin, FAL
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Tea_plantation_Haputale.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Tea plantation, Haputale
-                </a>{' '}
-                — Adbar, CC BY-SA 3.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Sri_Lanka,_Tea_leaves,_Nuwara_Eliya.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Tea leaves, Nuwara Eliya
-                </a>{' '}
-                — Vyacheslav Argenberg, CC BY 4.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Sri_Lanka,_Haputale,_Train_in_the_mountains_of_Sri_Lanka%27s_%27Hill_Country%27.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Hill country train
-                </a>{' '}
-                — Vyacheslav Argenberg, CC BY 4.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Tuskers_of_Sri_Lanka.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Tuskers of Sri Lanka
-                </a>{' '}
-                — Sumudusoyza007, CC BY-SA 4.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Mirissa_sea_2.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Mirissa
-                </a>{' '}
-                — Thedani Karasnagoda, CC BY-SA 4.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Fishermen_practicing_traditional_stilt_fishing_near_Galle,_southern_Sri_Lanka,_20260207_1420_9464.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Stilt fishermen, Koggala
-                </a>{' '}
-                — Jakub Hałun, CC BY 4.0
-              </li>
-              <li>
-                <a
-                  href="https://commons.wikimedia.org/wiki/File:Beach_of_Arugam_Bay.jpg"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Arugam Bay
-                </a>{' '}
-                — Dennis Sylvester Hurd, CC0
-              </li>
-            </ul>
-            <p className="credits__note">
-              All photographs via Wikimedia Commons, reproduced under their respective licences. Route and timings are
-              illustrative.
-            </p>
-          </details>
 
           <div className="footer__bottom">
             <span>© 2026 Serendipity — a design study</span>
