@@ -1,0 +1,110 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net (Default Deny)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Hardened Global Primitives
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isBootstrappedAdmin() {
+      return isVerifiedUser() && request.auth.token.email == 'merlinfiverr0@gmail.com';
+    }
+
+    function isAdmin() {
+      return isBootstrappedAdmin() || (
+        isVerifiedUser() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // 3. Entity Validation Blueprints
+    function isValidSiteContent(data) {
+      return data.keys().hasAll(['texts', 'updatedBy', 'updatedAt']) &&
+        data.keys().hasOnly(['texts', 'updatedBy', 'updatedAt']) &&
+        data.texts is map &&
+        data.texts.size() <= 500 &&
+        isValidId(data.updatedBy) &&
+        data.updatedBy == request.auth.uid &&
+        data.updatedAt is timestamp &&
+        data.updatedAt == request.time;
+    }
+
+    function isValidAdminRecord(data, adminUid) {
+      return data.keys().hasAll(['uid', 'role', 'createdAt']) &&
+        data.keys().hasOnly(['uid', 'role', 'createdAt']) &&
+        isValidId(data.uid) &&
+        data.uid == adminUid &&
+        data.role is string &&
+        data.role.size() == 5 &&
+        data.role == 'admin' &&
+        data.createdAt is timestamp &&
+        data.createdAt == request.time;
+    }
+
+    // 4. Collection: /site_content/{docId}
+    match /site_content/{docId} {
+      allow get: if isValidId(docId) && docId == 'main';
+      allow list: if false;
+
+      allow create: if isVerifiedUser() &&
+        isValidId(docId) &&
+        docId == 'main' &&
+        isValidSiteContent(incoming()) &&
+        isAdmin();
+
+      allow update: if isVerifiedUser() &&
+        isValidId(docId) &&
+        docId == 'main' &&
+        isValidSiteContent(incoming()) &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['texts', 'updatedBy', 'updatedAt']) &&
+        isAdmin();
+
+      allow delete: if false;
+    }
+
+    // 5. Collection: /admins/{adminUid}
+    match /admins/{adminUid} {
+      allow get: if isVerifiedUser() &&
+        isValidId(adminUid) &&
+        (request.auth.uid == adminUid || isAdmin());
+      allow list: if false;
+
+      allow create: if isVerifiedUser() &&
+        isValidId(adminUid) &&
+        isValidAdminRecord(incoming(), adminUid) &&
+        isAdmin();
+
+      allow update: if isVerifiedUser() &&
+        isValidId(adminUid) &&
+        isValidAdminRecord(incoming(), adminUid) &&
+        incoming().uid == existing().uid &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['role']) &&
+        isAdmin();
+
+      allow delete: if false;
+    }
+  }
+}

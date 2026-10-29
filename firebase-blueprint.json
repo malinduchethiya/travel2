@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "SiteContent": {
+      "title": "SiteContent",
+      "description": "Editable text dictionary for all sections of the 4Me Lanka Tours website",
+      "type": "object",
+      "properties": {
+        "texts": {
+          "type": "object",
+          "description": "Map of text key identifiers to their customized string values"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "UID of the admin who performed the update",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of the last content update"
+        }
+      },
+      "required": ["texts", "updatedBy", "updatedAt"]
+    },
+    "AdminRecord": {
+      "title": "AdminRecord",
+      "description": "Record identifying an administrator account by UID",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the administrator",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "role": {
+          "type": "string",
+          "description": "Fixed administrator role identifier",
+          "enum": ["admin"],
+          "minLength": 5,
+          "maxLength": 5
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the admin record was created"
+        }
+      },
+      "required": ["uid", "role", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/site_content/{docId}": {
+      "schema": { "$ref": "#/entities/SiteContent" },
+      "description": "Stores editable text overrides for the 4Me Lanka Tours website (main document ID: 'main')"
+    },
+    "/admins/{adminUid}": {
+      "schema": { "$ref": "#/entities/AdminRecord" },
+      "description": "Trusted administrator lookup collection"
+    }
+  }
+}
