@@ -1,3 +1,4 @@
+import { CREATIVE_TEXTS, CREATIVE_FIELDS } from './creativeContent';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { doc, getDoc, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore';
 import { onAuthStateChanged, User } from 'firebase/auth';
@@ -27,13 +28,13 @@ export interface DemoImageSlot {
 export const HERO_SLIDES_DEFAULT = [
   {
     slotId: 'hero.slide1.img',
-    defaultSrc: '/assets/aistudio/sigiriya-view_e6bf3949.jpg',
+    defaultSrc: '/assets/aistudio/hero_58b958e2.jpg',
     captionKey: 'hero.slide1.caption',
     locationKey: 'hero.slide1.location',
   },
   {
     slotId: 'hero.slide2.img',
-    defaultSrc: '/assets/aistudio/hero-slide-nine-arch.jpg',
+    defaultSrc: '/assets/aistudio/ella_53a0777f.jpg',
     captionKey: 'hero.slide2.caption',
     locationKey: 'hero.slide2.location',
   },
@@ -57,23 +58,24 @@ export const HERO_SLIDES_DEFAULT = [
   },
   {
     slotId: 'hero.slide6.img',
-    defaultSrc: '/assets/aistudio/hero-slide-southern-coast.jpg',
+    defaultSrc: '/assets/aistudio/mirissa_3d3801f6.jpg',
     captionKey: 'hero.slide6.caption',
     locationKey: 'hero.slide6.location',
   },
 ];
 
 export const DEFAULT_SITE_TEXTS: Record<string, string> = {
+  ...CREATIVE_TEXTS,
   // Navigation & Header
   'nav.brand': '4Me Lanka Tours',
   'nav.home': 'Home',
-  'nav.tours': 'Tour Packages',
-  'nav.destinations': 'Destinations',
-  'nav.todo': 'To Do',
-  'nav.memories': 'Memories',
-  'nav.blogs': 'Blogs',
-  'nav.contact': 'Contact Us',
-  'nav.cta': 'WhatsApp Inquiry',
+  'nav.tours': "Our journeys",
+  'nav.destinations': "The island",
+  'nav.todo': "Things to feel",
+  'nav.memories': "The guestbook",
+  'nav.blogs': "Island notes",
+  'nav.contact': "Let’s make a plan",
+  'nav.cta': "Make it yours",
   'nav.mobileIndexLabel': 'Index · 4Me Lanka Tours',
   'nav.mobileFootLine1': 'Say Hi As Guests, Bye As Friends · SLTDA/TD/CAVA/1758',
   'nav.mobileFootLine2': 'WhatsApp / Voice: +94 71 285 7705 · 4melankatours@gmail.com',
@@ -436,6 +438,7 @@ export const DEFAULT_SITE_TEXTS: Record<string, string> = {
 };
 
 export const SITE_TEXT_SECTIONS: SiteSectionMeta[] = [
+  { id: 'creative', title: 'Island Journal · New Design', subtitle: 'Headlines, editorial copy, and calls to action used by the redesigned public website.', fields: CREATIVE_FIELDS },
   {
     id: 'hero',
     title: '01 · Hero & Auto Slideshow',
@@ -813,20 +816,30 @@ export const SITE_TEXT_SECTIONS: SiteSectionMeta[] = [
 ];
 
 export const DEMO_IMAGE_SLOTS: DemoImageSlot[] = [
+{"id": "creative.intro.tea.img", "sectionId": "creative", "label": "Intro postcard — tea hills", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/tea-hills_bfabb10f.jpg"},
+{"id": "creative.worlds.01.img", "sectionId": "creative", "label": "Landscape chapter — hills", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/ella_53a0777f.jpg"},
+{"id": "creative.worlds.02.img", "sectionId": "creative", "label": "Landscape chapter — coast", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/mirissa_3d3801f6.jpg"},
+{"id": "creative.worlds.03.img", "sectionId": "creative", "label": "Landscape chapter — culture", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/hero_58b958e2.jpg"},
+{"id": "creative.worlds.04.img", "sectionId": "creative", "label": "Landscape chapter — wild", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/yala-safari_fbf20478.jpg"},
+{"id": "creative.atlas.sigiriya.img", "sectionId": "creative", "label": "Island finder — Sigiriya", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/hero_58b958e2.jpg"},
+{"id": "creative.atlas.ella.img", "sectionId": "creative", "label": "Island finder — Ella", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/ella_53a0777f.jpg"},
+{"id": "creative.atlas.galle.img", "sectionId": "creative", "label": "Island finder — Galle", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/galle_9e7733fe.jpg"},
+{"id": "creative.atlas.tissa-yala.img", "sectionId": "creative", "label": "Island finder — Yala", "dimensionsHint": "High-resolution landscape", "defaultSrc": "/assets/aistudio/yala-safari_fbf20478.jpg"},
+
   // Hero Slideshow
   {
     id: 'hero.slide1.img',
     sectionId: 'hero',
     label: 'Hero Slide 01 — Sigiriya Lion Rock',
     dimensionsHint: '1920×1080 Landscape',
-    defaultSrc: '/assets/aistudio/sigiriya-view_e6bf3949.jpg',
+    defaultSrc: '/assets/aistudio/hero_58b958e2.jpg',
   },
   {
     id: 'hero.slide2.img',
     sectionId: 'hero',
     label: 'Hero Slide 02 — Nine Arch Bridge, Ella',
     dimensionsHint: '1920×1080 Landscape',
-    defaultSrc: '/assets/aistudio/hero-slide-nine-arch.jpg',
+    defaultSrc: '/assets/aistudio/ella_53a0777f.jpg',
   },
   {
     id: 'hero.slide3.img',
@@ -854,7 +867,7 @@ export const DEMO_IMAGE_SLOTS: DemoImageSlot[] = [
     sectionId: 'hero',
     label: 'Hero Slide 06 — Southern Palm Coast',
     dimensionsHint: '1920×1080 Landscape',
-    defaultSrc: '/assets/aistudio/hero-slide-southern-coast.jpg',
+    defaultSrc: '/assets/aistudio/mirissa_3d3801f6.jpg',
   },
 
   // The Island
