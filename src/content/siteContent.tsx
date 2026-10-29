@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { doc, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth, db, handleFirestoreError, OperationType } from '../firebase';
 
@@ -1048,8 +1048,43 @@ export function SiteContentProvider({ children }: { children: React.ReactNode })
     return () => unsub();
   }, []);
 
-  // Real-time Firestore listener on /site_content/main (publicly readable)
+  // Initial one-time fetch of public /site_content/main, plus real-time listener when authenticated
   useEffect(() => {
+    let isMounted = true;
+    const docRef = doc(db, 'site_content', 'main');
+
+    getDoc(docRef)
+      .then((snapshot) => {
+        if (!isMounted) return;
+        setCloudSynced(true);
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+          if (data && data.texts && typeof data.texts === 'object') {
+            const cloudTexts = data.texts as Record<string, string>;
+            setOverrides((prev) => {
+              const merged = { ...cloudTexts, ...prev };
+              try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(merged));
+              } catch {
+                // ignore
+              }
+              return merged;
+            });
+          }
+        }
+      })
+      .catch(() => {
+        // Offline or local-first fallback; local overrides and defaults remain active
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // Attach real-time onSnapshot listener only when auth is ready and user is authenticated
+  useEffect(() => {
+    if (!authReady || !user) return;
     const docRef = doc(db, 'site_content', 'main');
     const unsub = onSnapshot(
       docRef,
@@ -1071,12 +1106,12 @@ export function SiteContentProvider({ children }: { children: React.ReactNode })
           }
         }
       },
-      (err) => {
-        console.warn('Firestore /site_content/main listener note:', err.message);
+      () => {
+        // Ignore transient listener disconnects
       }
     );
     return () => unsub();
-  }, []);
+  }, [authReady, user]);
 
   // Cross-tab sync via storage event
   useEffect(() => {
