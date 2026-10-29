@@ -52,7 +52,7 @@ export default function AdminPanel() {
 
   const [demoEmail, setDemoEmail] = useState('admin@4melankatours.com');
   const [demoPass, setDemoPass] = useState('4melanka2026');
-  const [activeTab, setActiveTab] = useState<string>('hero');
+  const [activeTab, setActiveTab] = useState<string>('creative');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusBanner, setStatusBanner] = useState<string | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
@@ -238,7 +238,7 @@ export default function AdminPanel() {
               </span>
             </div>
             <p className="admin-topbar__sub">
-              Edit every text across the entire website · Demo image upload slots enabled (local preview only)
+              Edit Island Journal content, tour information, contact details, and images · Image previews remain local
             </p>
           </div>
         </div>
